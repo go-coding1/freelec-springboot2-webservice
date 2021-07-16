@@ -28,7 +28,15 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
