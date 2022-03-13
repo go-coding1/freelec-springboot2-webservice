@@ -134,32 +134,6 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
-
-    @Test
-    public void Posts_조회하기(){
-        //given
-        Posts newPosts = postsRepository.save(Posts.builder()
-                .title("title")
-                .content("content")
-                .author("author")
-                .build());
-
-        //포스트 등록하는 url
-        String url = "http://localhost:" + port + "api/v1/posts/1";
-
-        //when
-        ResponseEntity<Object> entity = restTemplate.getForEntity(url, Object.class);
-
-        //then
-        assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-
-        List<Posts> all = postsRepository.findAll();
-
-        assertThat(all.get(0).getTitle()).isEqualTo("title");
-        assertThat(all.get(0).getContent()).isEqualTo("content");
-
-    }
 }
 /*Api Controller를 테스트하는데 HelloController 와 달리 @WebMvcTest
 * 를 사용하지 않았습니다. @WebMvcTest의 경우 JPA 기능이 작동하지 않기 때문인데,
